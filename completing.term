@@ -1,0 +1,463 @@
+NOW at the side of Fodubu main app 
+Corrige this terms and privacy files and after I will take them the it's repos again make it perfect include this line 
+
+Setra,Traco, Fodubu are Trademarks of FODUBU LTD.
+The client email :infos@fodubu.con
+technical email: support@fodubu.com
+
+
+
+src/
+  components/
+    Terms.jsx
+jsx
+
+import React, { useState, useEffect } from "react";
+import { jsPDF } from "jspdf";
+
+// Full Terms & Conditions content (simplified snippet, replace with full text)
+const TERMS = {
+  en: [
+    { num: 1, title: "Introduction", body: `<p>Welcome to FODUBU® – Global Powering Trade, Agriculture, Industries, E-Commerce and growth with Pi.</p>` },
+    { num: 2, title: "Definitions", body: `<p><strong>Platform:</strong> FODUBU® connects agriculture, industry, commerce, and e-commerce.</p>` },
+    { num: 3, title: "Eligibility", body: `<p>Users must be 18+ and legally able to enter contracts.</p>` },
+    { num: 4, title: "Account Registration", body: `<p>Accounts must contain accurate info and complete KYC.</p>` },
+    { num: 5, title: "Payment & Pricing", body: `<p>Accepted payments: Pi Network. Fees & commissions apply.</p>` },
+    { num: 6, title: "Consumer Rights & Delivery", body: `<p><strong>Returns:</strong> Within 7 days for damaged, defective, or unsent goods.</p>` },
+    { num: 7, title: "B2B Terms", body: `<p>Direct between vendor & buyer. FODUBU® intervenes only if fraud occurs.</p>` },
+    { num: 8, title: "Platform Rules", body: `<ul><li>No illegal or harmful content.</li><li>No abuse of payment systems.</li></ul>` },
+    { num: 9, title: "Intellectual Property", body: `<p>All content is owned or licensed by FODUBU®.</p>` },
+    { num: 10, title: "Liability Limits", body: `<ul><li>FODUBU® not liable for indirect losses or 3rd-party delays.</li></ul>` },
+    { num: 11, title: "Dispute Resolution", body: `<p>Disputes resolved amicably under Burundian law; international disputes via arbitration.</p>` },
+    { num: 12, title: "Amendments", body: `<p>FODUBU® may update these terms at any time. Updates published on the platform.</p>` },
+    { num: 13, title: "Contact", body: `<p>Email: info@fodubu.com<br/>Phone: +257 76980980<br/>Office: Bujumbura, Ntahangwa, Burundi</p>` }
+  ],
+  fr: [/* French translation */],
+  rn: [/* Kirundi translation */],
+  zh: [/* Chinese */],
+  sw: [/* Swahili */]
+};
+
+const LANG_SUBTITLES = {
+  en: "Read carefully — these terms govern your use of FODUBU®",
+  fr: "Lisez attentivement — ces conditions régissent votre utilisation de FODUBU®",
+  rn: "Soma neza — aya mategeko agenga uburyo ukoresha FODUBU®",
+  zh: "请仔细阅读 — 这些条款管理您对 FODUBU® 的使用",
+  sw: "Soma kwa makini — masharti haya yanaongoza matumizi yako ya FODUBU®"
+};
+
+export default function Terms() {
+  const [language, setLanguage] = useState("en");
+  const [accepted, setAccepted] = useState(false);
+  const [contact, setContact] = useState({ name: "", email: "", subject: "", message: "" });
+  const acceptedKey = "fodubu_terms_accepted_v2";
+
+  useEffect(() => {
+    const storedAccepted = localStorage.getItem(acceptedKey) === "1";
+    setAccepted(storedAccepted);
+
+    const browserLang = (navigator.language || "en").slice(0,2);
+    if(["en","fr","rn","zh","sw"].includes(browserLang)) setLanguage(browserLang);
+  }, []);
+
+  const toggleAccept = () => {
+    if(accepted) {
+      if(window.confirm("Unaccept terms? This will clear acceptance.")) {
+        localStorage.removeItem(acceptedKey);
+        setAccepted(false);
+      }
+    } else {
+      localStorage.setItem(acceptedKey,"1");
+      setAccepted(true);
+      alert("You have accepted FODUBU® Terms & Conditions.");
+    }
+  };
+
+  const handleDownloadPDF = async () => {
+    const sections = TERMS[language] || TERMS.en;
+    const doc = new jsPDF({ unit:"pt", format:"a4" });
+    let html = `<div style="font-family:Arial,sans-serif;padding:20px;color:#111">`;
+    html += `<h1>FODUBU® — Terms & Conditions</h1>`;
+    html += `<h4>Language: ${language.toUpperCase()}</h4>`;
+    sections.forEach(sec => {
+      html += `<h2 style="margin-top:18px">${sec.num}. ${sec.title}</h2>`;
+      html += `<div>${sec.body}</div>`;
+    });
+    html += `<hr><p>Contact: info@fodubu.com • +257 76980980 • Bujumbura, Ntahangwa, Burundi</p>`;
+    html += `</div>`;
+
+    try {
+      await doc.html(html, { x:40, y:40, html2canvas:{ scale:0.95 }, callback: doc=>doc.save(`FODUBU_Terms_${language.toUpperCase()}.pdf`) });
+    } catch(err) {
+      let text = `FODUBU® — Terms & Conditions (${language.toUpperCase()})\n\n`;
+      sections.forEach(sec => { text += `${sec.num}. ${sec.title}\n` + sec.body.replace(/<[^>]+>/g,'') + "\n\n"; });
+      doc.text(text,40,40);
+      doc.save(`FODUBU_Terms_${language.toUpperCase()}.pdf`);
+    }
+  };
+
+  const handleContactChange = e => { const { id,value } = e.target; setContact(prev=>({...prev,[id]:value})); };
+  const handleOpenMail = () => {
+    const { name,email,subject,message } = contact;
+    if(!name||!email||!message) return alert("Please fill name, email, message.");
+    if(!accepted&&!window.confirm("You have not accepted Terms & Conditions. Continue?")) return;
+    const body = `From: ${name}\nEmail: ${email}\n\n${message}\n---\nSent via FODUBU® website`;
+    window.location.href = `mailto:info@fodubu.com?subject=${encodeURIComponent(subject||"Contact from FODUBU")}&body=${encodeURIComponent(body)}`;
+  };
+  const handleCopyMessage = async () => {
+    const { name,email,subject,message } = contact;
+    const text = `Subject: ${subject}\nFrom: ${name}\nEmail: ${email}\n\n${message}`;
+    try{ await navigator.clipboard.writeText(text); alert("Message copied."); } catch { alert("Copy failed."); }
+  };
+
+  return (
+    <div style={{ display:"grid", gridTemplateColumns:"1fr 360px", gap:"18px", padding:"18px" }}>
+      {/* Main Terms */}
+      <main style={{ padding:"20px", background:"#fff", borderRadius:"12px", overflowY:"auto", maxHeight:"80vh" }}>
+        <div>
+          <h2>Terms & Conditions — FODUBU®</h2>
+          <div style={{ fontSize:"13px", color:"#64748b" }}>{LANG_SUBTITLES[language]}</div>
+          <div style={{ margin:"12px 0" }}>
+            <select value={language} onChange={e=>setLanguage(e.target.value)} style={{ marginBottom:"12px" }}>
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="rn">Kirundi</option>
+              <option value="zh">中文</option>
+              <option value="sw">Kiswahili</option>
+            </select>
+            <button onClick={handleDownloadPDF} style={{ marginLeft:"8px" }}>⬇ Download PDF</button>
+            <button onClick={toggleAccept} style={{ marginLeft:"8px" }}>{accepted?"Accepted ✓":"Accept"}</button>
+          </div>
+        </div>
+        <ol>
+          {TERMS[language]?.map(sec=>(
+            <li key={sec.num}><a href={`#sec-${sec.num}`} onClick={e=>{e.preventDefault(); document.getElementById(`sec-${sec.num}`)?.scrollIntoView({behavior:"smooth"});}}>{sec.num}. {sec.title}</a></li>
+          ))}
+        </ol>
+        {TERMS[language]?.map(sec=>(
+          <section key={sec.num} id={`sec-${sec.num}`} style={{ marginTop:"20px" }}>
+            <h3>{sec.num}. {sec.title}</h3>
+            <div dangerouslySetInnerHTML={{ __html: sec.body }} />
+          </section>
+        ))}
+      </main
+
+
+2.
+// src/components/PrivacyPage.jsx
+import React, { useState, useEffect } from 'react';
+
+const STRINGS = {
+  en: {
+    title: 'FODUBU® — Privacy Policy',
+    overview: 'Overview',
+    contactTitle: 'Contact & Data Requests',
+    submitRequest: 'Submit Request',
+    cookieTitle: 'We use cookies',
+    cookieText:
+      'We use essential, analytics and marketing cookies to operate and improve the site. Manage preferences or accept to continue.',
+  },
+  rw: {
+    title: "FODUBU® — Politiki y'Ubuzima bw'Umuntu",
+    overview: "Ingingo y'ingaruka",
+    contactTitle: 'Guhuza & Gusaba Data',
+    submitRequest: 'Ohereza Itegeko',
+    cookieTitle: 'Dukoresha cookies',
+    cookieText:
+      "Dukoresha cookies z'ingenzi, analytics na marketing kugirango urubuga rukore neza. Shyiraho uburyo cyangwa wemere.",
+  },
+};
+
+export default function PrivacyPage() {
+  const [lang, setLang] = useState('en');
+  const [cookieConsent, setCookieConsent] = useState({ accepted: false, analytics: false, marketing: false });
+  const [consentModalOpen, setConsentModalOpen] = useState(false);
+  const [formMsg, setFormMsg] = useState('');
+
+  // mimic user export
+  const sampleUser = {
+    name: 'Sample User',
+    email: 'user@example.com',
+    phone: '+257980980',
+    addresses: { billing: 'Bujumbura, Ntahangwa' },
+    transactions: [],
+  };
+
+  useEffect(() => {
+    // Load saved consent from localStorage
+    const saved = localStorage.getItem('fodubu_cookie_consent');
+    if (saved) setCookieConsent(JSON.parse(saved));
+  }, []);
+
+  const logConsent = (action, details) => {
+    const logs = JSON.parse(localStorage.getItem('fodubu_privacy_logs') || '[]');
+    logs.push({ time: new Date().toISOString(), action, details });
+    localStorage.setItem('fodubu_privacy_logs', JSON.stringify(logs));
+    console.log('FODUBU privacy log:', action, details);
+  };
+
+  const saveConsent = (consent) => {
+    setCookieConsent(consent);
+    localStorage.setItem('fodubu_cookie_consent', JSON.stringify(consent));
+    logConsent('consent_set', consent);
+  };
+
+  const downloadJSON = (filename, obj) => {
+    const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const handlePrivacySubmit = (e) => {
+    e.preventDefault();
+    const type = e.target.requestType.value;
+    const email = e.target.userEmail.value;
+    const details = e.target.details.value;
+    const payload = { type, email, details, requestedAt: new Date().toISOString() };
+    setFormMsg('Request submitted. We will respond within 45 days.');
+    logConsent('privacy_request_submitted', payload);
+  };
+
+  return (
+    <main style={styles.wrap}>
+      <header style={styles.header}>
+        <div style={styles.brand}>
+          <div style={styles.logo}>FD</div>
+          <div>
+            <h1>{STRINGS[lang].title}</h1>
+            <p style={styles.lead}>
+              Effective Date: <strong>07 September 2025</strong>
+            </p>
+            <div style={styles.metaPills}>
+              <span style={styles.pill}>Multi-Sector Digital Trade Ecosystem</span>
+              <span style={styles.pill}>Powered by Pi</span>
+              <span style={styles.pill}>Bujumbura, Burundi</span>
+            </div>
+          </div>
+        </div>
+        <nav style={styles.controls}>
+          <select value={lang} onChange={(e) => setLang(e.target.value)} style={styles.lang}>
+            <option value="en">English</option>
+            <option value="rw">Kinyarwanda</option>
+          </select>
+          <button style={styles.ghostBtn} onClick={() => document.getElementById('privacyRequestForm').scrollIntoView({ behavior: 'smooth' })}>
+            Submit a Privacy Request
+          </button>
+          <button style={styles.btn} onClick={() => setConsentModalOpen(true)}>
+            Cookie Settings
+          </button>
+        </nav>
+      </header>
+
+      <div style={styles.grid}>
+        {/* Main content */}
+        <section style={styles.card}>
+          <div style={styles.sectionTitle}>
+            <h2>{STRINGS[lang].overview}</h2>
+            <span style={styles.muted}>Clear · Secure · Transparent</span>
+          </div>
+          <p style={styles.muted}>
+            FODUBU® collects the minimum information necessary to provide marketplace services, process Pi payments, and keep your data secure. Below
+            you’ll find details on what we collect, why, how long we keep it, and how to exercise your rights.
+          </p>
+
+          {/* Info sections */}
+          <details open>
+            <summary>1. Information We Collect</summary>
+            <dl>
+              <dt>Personal Data</dt>
+              <dd>Name, email, phone number, billing & shipping addresses, and account credentials.</dd>
+              <dt>Transaction Data</dt>
+              <dd>Purchases, subscriptions, and Pi Network payment records (where applicable).</dd>
+              <dt>Usage Data</dt>
+              <dd>Login logs, preferences, and browsing patterns to improve the service.</dd>
+              <dt>Device & Network Info</dt>
+              <dd>IP address, browser type, device identifier and location (only with permission).</dd>
+            </dl>
+          </details>
+
+          <details>
+            <summary>2. How We Use Your Data</summary>
+            <p style={styles.muted}>
+              We use data to operate the platform, process payments, comply with legal obligations, and to enhance the user experience and marketing.
+            </p>
+          </details>
+
+          <details>
+            <summary>3. Your Rights</summary>
+            <ul style={styles.muted}>
+              <li>Access, correct, delete, or restrict your personal data.</li>
+              <li>Request data portability (export your personal data).</li>
+              <li>Withdraw consent at any time.</li>
+              <li>Opt-out of sale or sharing of personal data (we do not sell personal data).</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>4. Data Retention & Security</summary>
+            <p style={styles.muted}>
+              We keep data only as long as needed for transactions, legal compliance, and support. Transactions are encrypted using Cloudflare SSL/TLS Full
+              (Strict). Servers use access controls and monitoring.
+            </p>
+          </details>
+
+          <details>
+            <summary>5. Cookies & Tracking</summary>
+            <p style={styles.muted}>
+              We use essential cookies, analytics cookies, and marketing cookies. Manage preferences via the Cookie Settings dialog. Detailed cookie table
+              is below.
+            </p>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Purpose</th>
+                  <th>Retention</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Essential</td>
+                  <td>Site security, login, shopping cart</td>
+                  <td>Session / 1 year</td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Usage metrics and performance</td>
+                  <td>13 months</td>
+                </tr>
+                <tr>
+                  <td>Marketing</td>
+                  <td>Personalized offers and ads</td>
+                  <td>2 years</td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <details>
+            <summary>6. Children’s Privacy</summary>
+            <p style={styles.muted}>FODUBU® is not for users under 18. We do not knowingly collect data from minors.</p>
+          </details>
+
+          <details>
+            <summary>7. Governing Law & Disputes</summary>
+            <p style={styles.muted}>This policy is governed by the laws of Burundi. Disputes will be addressed via Notarian Jurisdiction.</p>
+          </details>
+
+          <details>
+            <summary>8. Changes to This Policy</summary>
+            <p style={styles.muted}>We may update this Privacy Policy. Changes will be posted here and communicated when appropriate.</p>
+          </details>
+
+          {/* Contact & form */}
+          <section>
+            <h3>{STRINGS[lang].contactTitle}</h3>
+            <p style={styles.mutedSmall}>
+              To exercise your rights or submit a request, use the form or contact:
+            </p>
+            <p style={styles.mutedSmall}>
+              Email: <a href="mailto:support@fodubu.com">support@fodubu.com</a> • Phone: <a href="tel:+257980980">+257 980980</a>
+            </p>
+
+            <form id="privacyRequestForm" onSubmit={handlePrivacySubmit}>
+              <label>
+                Request Type
+                <select name="requestType" required>
+                  <option value="access">Access my data</option>
+                  <option value="portability">Data portability</option>
+                  <option value="correction">Correct my data</option>
+                  <option value="deletion">Delete my data</option>
+                  <option value="optout">Opt-out / Do not sell</option>
+                </select>
+              </label>
+
+              <label>
+                Your email
+                <input name="userEmail" type="email" placeholder="you@example.com" required />
+              </label>
+
+              <label>
+                Additional details (optional)
+                <textarea name="details" rows="4" placeholder="Any verification info or notes..." />
+              </label>
+
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 10 }}>
+                <button style={styles.btn} type="submit">
+                  Submit Request
+                </button>
+                <button
+                  style={styles.ghostBtn}
+                  type="button"
+                  onClick={() => {
+                    document.getElementById('privacyRequestForm').reset();
+                    setFormMsg('');
+                  }}
+                >
+                  Reset
+                </button>
+                <div style={styles.mutedSmall}>{formMsg}</div>
+              </div>
+            </form>
+          </section>
+
+          <footer style={styles.footer}>
+            <p style={styles.mutedSmall}>
+              Contact: support@fodubu.com • Phone: +257 980980 • Address: Bujumbura, Ntahangwa, Burundi
+            </p>
+          </footer>
+        </section>
+
+        {/* Sidebar */}
+        <aside style={styles.sidebar}>
+          <div style={styles.cardBox}>
+            <h3>Quick actions</h3>
+            <p style={styles.muted}>Export your data, request deletion, or manage cookie preferences.</p>
+            <button style={styles.smallBtn} onClick={() => downloadJSON('fodubu-data.json', sampleUser)}>
+              Export my data (JSON)
+            </button>
+            <button
+              style={styles.smallGhostBtn}
+              onClick={() => {
+                const email = 'support@fodubu.com';
+                const subject = encodeURIComponent('Data deletion request - FODUBU');
+                const body = encodeURIComponent(
+                  'Hello FODUBU team,\n\nI request deletion of my personal data associated with this account. Please advise next steps and any verification required.\n\nThank you.'
+                );
+                logConsent('deletion_initiated', { method: 'mailto' });
+                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+              }}
+            >
+              Request deletion
+            </button>
+          </div>
+
+          <div style={styles.cardBox}>
+            <h4>Cookie Settings</h4>
+            <p style={styles.muted}>Toggle categories to customize tracking.</p>
+            <label>
+              <input type="checkbox" checked disabled /> Essential (required)
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={cookieConsent.analytics}
+                onChange={(e) => saveConsent({ ...cookieConsent, analytics: e.target.checked })}
+              />{' '}
+              Analytics
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={cookieConsent.marketing}
+                onChange={(e) => saveConsent({ ...cookieConsent, marketing: e.target.checked })}
+              />{' '}
+              Marketing
+            </label>
+  
