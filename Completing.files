@@ -1,0 +1,718 @@
+The sixth products stock is : 50
+
+7th 
+"FDB-VEHICLE-001A"
+name: "BYD TANGL 1.5T"
+category: Vehicles
+sous category: BYD
+stock: 100
+model_year: 2025
+description:"2025_BYD_Tang_1.5T_156HP_L4_E-CVT_PHEV , Mid-Size PHEV SUV, 1.5T Hybrid Powertrain, E-CVT, 7 Seats"
+
+specification:{
+Model: 2025 BYD Tang 1.5T 156HP L4 PHEV (Plug-In Hybrid)
+Engine: 1.5 L turbocharged I4 with 156 hp
+Transmission: E-CVT (Electronic Continuously Variable Transmission)
+Fuel Type: Plug-In Hybrid (gasoline + electric)
+Seats: 7 passengers
+Drive: Front-engine, front-wheel drive (FWD)
+Range: ~175 km CLTC combined (electric + hybrid)
+Top Speed: ~200 km/h
+Battery: ~21.5 kWh PHEV battery
+
+  "price: $65000/0.207Pi
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/byd_hy-01a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+8th .FDB-VEHICLE-003A 
+
+id: FDB-VEHICLE-004A
+name: "2025 F-150 Lightning" 
+Pro
+category: Vehicles
+sous category: Pickup
+model_year: 2025
+stock :200
+description: "Pickup Ford 2025 F-150 Lightning"
+
+specification:
+2025 F-150 Lightning
+Pro
+s1
+8350 lbs GVWR
+2329 lbs Max Payload
+Seating for 5
+
+
+  price: $57780/0.1839197Pi
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_150_lightning-03a.jpg",
+},
+  "availability": "In Stock"
+}
+
+
+7.FDB-VEHICLE-005B
+productId: FDB-VEHICLE-004B
+name : F-150® XLT 
+category: Vehicles
+sous Category: Pickup
+stock:200
+
+description: "Available Black Appearance Packages turn XLT into street sleek. A powerful available 430 horsepower 3.5L PowerBoost® Full Hybrid V6 engine delivers exceptional towing and hauling capability"
+
+Color Black
+specification: “F-150® XLT model adds productivity to the base model. The 12" swipe center display features SYNC® Technology plus convenient towing tech like the availability of Pro Trailer Hitch Assist™. Available Black Appearance Packages turn XLT into street sleek. A powerful available 430 horsepower 3.5L PowerBoost® Full Hybrid V6 engine delivers exceptional towing and hauling capability”
+
+price: $52695/0.1677336Pi
+
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_lighning_xlt-03b.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+
+8.Vehicles/
+tabID10,
+id: FDB-VEHICLE-003C
+name: 2025 F-150 LARIAT
+category: Vehicles
+sous category: Pickup
+model_year: 2025
+Stock: 100
+
+specification:
+Heated and Ventilated ActiveXTM Leather-Trimmed Seats
+LED Projector with Dynamic Bending Headlamps with LED Taillamps
+Available 14-Speaker B&O® Audio System by Bang & Olufsen®
+Available Pro-Access Tailgate Equipped with Bed Utility Package
+Available Head-Up Display
+BlueCruise Hands-Free Highway Driving Equipped
+
+image :
+https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_150_lariat-03c.jpg
+
+  price: $71360/0.227147Pi
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_150_lariat-03c.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+11th.
+
+FDB-VEHICLE-004A (SUV)
+
+{
+  "product_id": "FDB-VEHICLE-003D",
+  "product_name": "Ford Mondeo Sport",
+category: Vehicles
+ subcategory: Sedan
+  "model_year": 2026,
+Stock:50
+  "description": "The Ford Mondeo Sport is efficient EcoBoost engines and hybrid options, the Mondeo Sport delivers both performance and fuel economy.",
+    {
+      "name": "Titanium",
+      "features": ["Premium interior", "Advanced driver-assist", "Leather seats"],
+      "price":
+    $32000/ 0.102778Pi
+stock :50
+      "name": "ST-Line",
+      "features": ["Sport styling", "Performance suspension", "LED headlights"],
+      "price": $33000/0.106Pi
+stock:50
+      "name": "Hybrid",
+      "features": ["EcoBoost hybrid engine", "Fuel efficiency", "Smart infotainment"],
+      "prices": $34000/0.109Pi
+  "imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/ford_mondeo_sport-04a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+
+12th,
+id : "FDB-VEHICLE-005A (SUV)
+name : "2025 Ford Explorer Platinum 4WD"
+category: Vehicles
+subCategory : SUV Explorer Ford
+model_year: 2025
+description: "2025 Ford Explorer Platinum 4WD | 2.3L EcoBoost 10SPD Auto |,
+
+price :$80000/0.25464812Pi
+
+specification:{
+Engine: 2.3L Turbo EcoBoost
+Power: ~300 HP
+Transmission: 10-speed automatic
+Drive: 4WD
+Seats: 6–7 passengers
+Features:
+Panoramic roof
+Leather interior
+Ford Co-Pilot360 (driver assist)
+Large touchscreen infotainment
+
+  "price: 0.25464812PI
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/explorer_pltnm-05a.jpg",
+
+}
+  "availability": "out Stock"
+}
+
+
+13th Vehicles/
+
+name : "BRONCO"
+category: Vehicles
+sous Category: Suv  Bronco Ford
+model_year: 2025
+stock: 150
+price:$80000/0.254649Pi
+
+description: "an off-road focused SUV with a 2.7L EcoBoost® V6 engine producing up to 330 horsepower"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+specification : an off-road focused SUV with a 2.7L EcoBoost® V6 engine producing up to 330 horsepower. It features a sophisticated 4X4 system with G.O.A.T. (Goes Over Any Terrain) Modes™. The vehicle includes a 12-inch SYNC® 4 system with over-the-air updates.
+Starting MSRP for the 2026 model is approximately.
+
+availability": {
+    "text": "Pi payments only; USD shown as convertible reference",
+    "available_in": {
+      "Pi": true,
+      "USD_as_reference": true
+    }
+  },
+
+  "price_line": "Price: BRONCO 0.254649PI (≈ $80000 USD)· 
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_bronco-05f.jpg",
+  
+},
+  "availability": "In Stock"
+}
+
+2)home&appliances
+
+A) home FDB-HOME
+tabID14
+1.home/
+id: FDB-HOME-001A
+name :"modern house with exterior" 
+Category: Home
+sous category: Houses
+model: Luxury 
+Decoration" 
+description:"modern house and use of high-quality materials such as marble, glass and metal to add elegance to the house, also stones  in  main surface for exterior decoration "
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+price :$577635/1.84PI
+specification:
+16-square, 2 floors,Larger premium villas
+Larger premium villas,
+with full  interesting kitchen cabinets, wardrobes and modern  interior doors.
+Image url;
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/wide_modern_vext-01a.jpg",
+  
+2.home/
+tabID15
+id:FDB-HOME-001B
+name :"wide modern villa"
+category: Home
+sous category: Houses
+Model: Luxury
+description:"wide modern villa and use high-quality materials"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true
+specification:{
+16 square, 1floors,Larger premium villas
+Larger premium villas ,with larger garden
+with full  interesting kitchen cabinets, wardrobes and modern  interior doors.
+
+availability": {
+    "text": "Pi payments only; USD shown as convertible reference",
+    "available_in": {
+      "Pi": true,
+      "USD_as_reference": true
+    }
+  },
+
+  "price_line": "Price: wide modern villa 1.84PI (≈ $577635 USD)· 
+Availability: Pi payments only; USD shown for reference",
+  "currency": "Pi",
+  "edge_all_open_tabs": [
+    {
+      "pageTitle": "<fodubu-main-marketplace>",
+      "pageUrl": "<https://trade.fodubu.com/fodubu-main-marketplace>",
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/wide_modern_vext-01a.jpg",
+
+  ],
+  "availability": "Pi payments only; USD shown as reference"
+}
+ "tabId": -15,
+ "isCurrent": true
+ }
+ ]
+}
+
+},
+  "availability": "In Stock"
+}
+
+3.home/
+tabID16
+id:FDB-HOME-001C
+name : "large modern villa"
+category: Home
+sous Category: Houses
+model: Luxury House
+description: "modern house and use of high-quality materials such as marble, glass and metal to add elegance to the house"
+specifications:
+16square, 2 floors, larger premium villas
+Larger premium villas,
+with full  interesting kitchen cabinets, wardrobes and modern  interior doors.
+
+
+  "price_line": "Price: large modern villa 0.004139Pi (≈ $1300 USD)· 
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/large_mvilla-01c.jpg",
+},
+  "availability": "In Stock"
+}
+
+
+B. 
+tabID17
+1.home/kitchen/
+id:FDB-HOME-002a
+name : "Titanium Series"
+category: Home
+sous category: Kitchen
+8 Piece Core Set"
+description:" the 3 quart saucepan with lid, the 4 quart sauté with lid, the 8 quart stock pot with lid, and the 10.5" and 12" fry pans"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+Price:$1300/0.004139Pi
+specifications:{
+steel cookware titanium series
+works on any stovetop gas, electric, induction,grill,oven
+ It includes the 3 quart saucepan with lid, the 4 quart sauté with lid, the 8 quart stock pot with lid, and the 10.5" and 12" fry pans.
+
+  "price: 0.004139Pi (≈ $1300 USD)·
+  "currency": "Pi",
+  "imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/titanium_8pcs-02a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+2.home/kitchen/
+tabID18
+id:FDB-HOME-002b
+Name : "16 Eater Series"
+category:Home
+sous category: Kitchen
+description:"EATER SERIES"
+specifications:{
+steel cookware eater series
+works on any stovetop gas, electric, induction,grill,oven
+-16 Piece Complete Kitchen Set includes;
+10.5" fry pan with lid
+12" fry pan with lid
+1.5 qt sauté pan with lid
+3 qt saucepan with lid
+3 qt saucier with lid
+4 qt sauté pan with lid
+5 qt sauce pot with lid
+8 qt stock pot with lid
+
+
+  "price": $1500/0.0047747Pi/
+"imagesUrl":
+ [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/eater_16pcs-02b.jpg",
+  },
+  "availability": "In Stock"
+}
+3.home/kitchen/
+tabID19
+id:FDB-HOME-002C
+name: "EATER SERIES" 
+category: Home
+sous category: Kitchen
+description:"a 10.5" fry pan, 3 quart saucepan with lid, and 4 quart sauté pan with lid.
+steel cookware titanium series"
+
+specifications:{
+5pieces essential set 
+This set includes a 10.5" fry pan, 3 quart saucepan with lid, and 4 quart sauté pan with lid.
+steel cookware titanium series
+works on any stovetop gas, electric, induction,grill,oven.
+
+
+  Price: $500/0.0015916Pi
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/eater_5pcs-02c.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+C)electronics/
+productId : FDB-ELECTRONICS-01A
+name:"TECLAST F15 Plus2",
+category: Electronics
+sous category: Laptops
+
+description: "15.6-inch budget-friendly laptop designed for basic productivity, students, and multimedia consumption"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+specification:{
+Processor: Intel Celeron N4120 (Quad-Core, 8th Gen Gemini Lake Refresh, up to 2.6GHz)
+RAM: 8GB LPDDR4X
+Storage: 256GB SSD (expandable via M.2 slot or TF card)
+Display: 15.6-inch Full HD (1920 x 1080) IPS, 7mm narrow bezels
+Graphics: Intel UHD Graphics 600 (supports 4K video)
+Weight: ~1.65 kg - 1.8 kg
+OS: Windows 10 Home (Upgrade to Windows 11 supported)
+
+
+  "price: $338/0.001076Pi
+"imagesUrl":
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/teclast_f15plus2-01a.jpg",
+},
+  "availability": "In Stock"
+}
+
+2.electronics/laptop
+
+productId: FDB-ELECTRONICS-001b
+name :"Teclast F15 Plus 2 Laptop"
+category: Electronics
+sous category: Laptops
+description:"15.6-inch budget-friendly laptop designed for basic productivity, students, and multimedia consumption”
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+specification:{
+ 15.6 Inch Windows 11 Laptop 8Gb Ram
+Teclast F15 Plus 2 Laptop 15.6 Inch Windows 11 Laptop 8Gb Ram 256Gb Ssd Gemini Lake N4120 Usb3.0 Mini-Hdmi Full Size Keyboard.
+
+availability": {
+    "text": "Pi payments only; USD shown as convertible reference",
+    "available_in": {
+      "Pi": true,
+      "USD_as_reference": true
+    }
+  },
+
+  "price_line": "Price: Teclast F15 Plus 2 Laptop 0.0166Pi (≈ $520 USD)· 
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/teclast_f15plus2-01b.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+5.electronics/telephones
+
+1)
+productId: FDB-ELECTRONICS-002A
+name: "ROG Phone 9"
+Category: "electronics"
+Sous Category : "telephones”
+description:"AI2501-12G256G-BK
+Qualcomm Snapdragon 8 Elite"
+
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+specification:
+AndroitTM: 15
+Display:
+6.78 inch FHD+ 2400 x1080
+AI2501-12G256G-BK
+Qualcomm Snapdragon 8 Elite
+LPDDR5X 12GB
+UFS4.0 256GB
+
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/rog_p9_ufs4.0_256gb-02a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+2 )
+id: FDB-ELECTRONICS-002B
+name : "ROG Phone 9 Pro Edition"
+Category: "electronics"
+Sous Category : "telephones”
+description: "Qualcomm Snapdragon 8 Elite" 
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+specifications:{
+AI2501-24G1T-BK
+Qualcomm Snapdragon 8 Elite
+LPDDR5X 24GB
+UFS4.0 1TB
+
+availability": {
+    "text": "Pi payments only; USD shown as convertible reference",
+    "available_in": {
+      "Pi": true,
+      "USD_as_reference": true
+    }
+  },
+
+   "Price: $1770/0.0057Pi
+"imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/rog_p9_ufs4.0_256gb-02a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+D)fashion
+1)
+
+id : FDB-FASHION-001A
+name :"Long Plain Shirt"
+Category: "fashion"
+Sous Category : "shirts"
+
+description:"premium long plain shirt"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+
+specification:
+ Coton Long Plain Shirt
+
+availability": {
+    "text": "Pi payments only; USD shown as convertible reference",
+    "available_in": {
+      "Pi": true,
+      "USD_as_reference": true
+    }
+  },
+
+ Price: $40/0.00013Pi
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/men_long_pl-01a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+2)
+id: FDB-FASHION-001b
+name : "Nike Air Force 1 Low sneakers"
+Category: "fashion"
+Sous Category : "shoes"
+description: "Nike Air Force 1 Low sneakers"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+Specification:{
+the iconic Nike Air Force 1 Low sneakers, available in classic all-white and all-black leather colorway
+
+  "price_line": "Price: Nike Air Force 1 Low sneakers 0.0004775Pi (≈ $150 USD)· 
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/af1_sneakers-01b.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+
+3.fashion/skirts/
+tabID26
+id: FDB-FASHION-001C
+name : "Knitted Midi Pleated Skirt"
+Category: "fashion"
+Sous Category : "skirts”
+description: "TIGENA Elegant Midi Pleated Knitted Skirt"
+specification:{
+color: Pink,Beige,Black
+Size :L,S,M
+specification:{
+Knitted Midi Pleated Skirt:
+TIGENA Elegant Midi Pleated Knitted Skirt 
+Hanover Pleated Skirt (White Elegance)
+Women Black A-Line High Waist Long Skirt
+
+  price: $70/0.000223Pi
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/kntd_pltd-01c.jpg",
+},
+  "availability": "In Stock"
+}
+
+4.fashion/pants
+tabID27
+id : FDB-FASHION-001D
+name : "Cargo Pants”
+Category: "fashion"
+Sous Category : "pants”
+
+description:" 
+specification:{
+Pants mens
+size : 30,32,36,38,40
+
+availability": {
+    "text": "Pi payments only; USD shown as convertible reference",
+    "available_in": {
+      "Pi": true,
+      "USD_as_reference": true
+    }
+  },
+
+  "price_line": "Price: Cargo Pants 0.000128Pi (≈ $40 USD)· 
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/pants_men-01d.jpg",
+
+  },
+  "availability": "In Stock"
+}
+
+5.fashion/pants/women
+
+id: FDB-FASHION-01E
+name : "3 piece outfits Long Live"
+description: "outfits Long Live floral-accented camisole top, and either long trousers or shorts"
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+Price :$27/0.000086Pi
+specification:{
+color: Pink,Beige,Black
+Size :L,S,M
+ a matching floral-accented camisole top, and either long trousers or shorts. 
+
+  Price: $27/0.00086Pi
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/women_l_live-01e.jpg",
+},
+  "availability": "In Stock"
+}
+
+6.
+productId: FDB-FASHION-001F
+name: "FAOWME Summer outfits Toddler Girls"
+Category: "fashion"
+Sous Category : "clothes”
+description: "buy FAOWME Summer outfits Toddler Girls Sleeveless Coat White Vest Butterfly"  Tulle Skirt Hat Four Piece Outfits Set For Kids Clothes Purple 5-6 Years
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+specification:{
+FAOWME Summer outfits Toddler Girls Sleeveless Coat White Vest Butterfly"  Tulle Skirt Hat Four Piece Outfits Set For Kids Clothes Purple 5-6 Years.
+
+"price: $50/0.00016Pi 
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/su_outfit_girls-01f.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+7)
+productId: FDB-FASHION-001G
+name : "Calvin Klein" 
+Category: "fashion"
+Sous Category : "clothes" 
+description: "a breathable cotton-blend fabric for casual wear"
+
+"pi_rate_usd": 314159,
+  "payment_modes": ["Pi"],
+  "usd_convertible_for_reference": true,
+
+"price: $40/0.000128Pi
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/men_calvin-01g.jpg",
+},
+  "availability": "In Stock"
+}
+
+
+
+E) food
+
+productId: FDB-FOOD-001A
+name: "JAUNE"
+Category: "cereals"
+Sous Category : "beans" 
+description:"Burundi Premium Beans JAUNE”
+specification: {
+10kg packages for each order.
+
+  price: $10/0.000032Pi 
+"imagesUrl": [
+    "https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_beans-01a.jpg",
+
+},
+  "availability": "In Stock"
+}
+
+2)food,
+
+productId : FDB-FOOD-001B
+name : "MUSIRIMU"
+Category: "cereals"
+Sous Category : "beans" 
+description:"Burundi Premium Beans Musirimu" 
+
+specification:
+10kg packages for each order.
+
+  "price: $10/0.000032Pi
+Availability: Pi payments only; USD shown for reference",
+ "imagesUrl": [
+"https://raw.githubusercontent.com/FODUBU/FODUBU-PRODUCT-IMAGES/refs/heads/main/f_beans-01b.jpg",
+
+  
+},
+  "availability": "In Stock"
+}
+
+3)
+guide me about placing secret and variable 
+CF_SDK__PAGES_CONFIG.js
+Wrangler.toml
+again according to structure if possible you
+make a full Admin Dashboard React UI skeleton that uses API  routes out-of-the-box, including:
+List products
+Edit modal
+Delete button
+Add product form (with image validation)
+Real-time Pi price display
