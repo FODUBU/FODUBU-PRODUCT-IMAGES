@@ -281,6 +281,216 @@ export default new PiNetworkIntegration();
 testPiIntegration();
 
 4.
-
+a.
 Subscription API documents;
 https://raw.githubusercontent.com/PiNetwork/PiRC/refs/heads/main/PiRC2/ReadMe.md
+b.
+traco financial file:
+/**
+ * TRACO Financial System for Tractor Loans
+ * Implements automated daily deductions with Pi Network integration
+ */
+
+import { getPiRate } from './pi-rate-oracle';
+
+// Financial Constants
+export const FINANCIAL_CONSTANTS = {
+  LOAN_TERM_YEARS: 5,
+  LOAN_TERM_DAYS: 1825, // 5 years * 365 days
+  ANNUAL_INTEREST_RATE: 0.12, // 12% APR
+  DAILY_OPERATIONAL_COST_USD: 417 / 30.0, // $13.90/day
+  YEARLY_OPERATIONAL_COST_USD: 5000,
+  FIVE_YEAR_OPERATIONAL_COST_USD: 15000,
+  BUFFER_FEE_PERCENTAGE: 0.05, // 5% buffer fee
+  PI_ISO_CODE: 'PI', // Pi Network ISO ID
+};
+
+export interface TractorLoanDetails {
+  tractorId: string;
+  tractorName: string;
+  principalUSD: number;
+  principalPi: number;
+  loanTermDays: number;
+  annualRate: number;
+  dailyPaymentUSD: number;
+  dailyPaymentPi: number;
+  totalPaymentUSD: number;
+  totalPaymentPi: number;
+  totalInterestUSD: number;
+  totalInterestPi: number;
+  bufferFeeUSD: number;
+  bufferFeePi: number;
+  operationalCostUSD: number;
+  operationalCostPi: number;
+  platformProfitUSD: number;
+  platformProfitPi: number;
+}
+
+/**
+ * Calculate daily amortization using standard amortization formula
+ * Daily Payment = P * [r(1+r)^n] / [(1+r)^n - 1]
+ * where P = principal, r = daily rate, n = number of days
+ */
+export function calculateDailyAmortization(
+  principalUSD: number,
+  annualRate: number,
+  loanTermDays: number
+): number {
+  const dailyRate = annualRate / 365;
+  const numerator = principalUSD * (dailyRate * Math.pow(1 + dailyRate, loanTermDays));
+  const denominator = Math.pow(1 + dailyRate, loanTermDays) - 1;
+  return numerator / denominator;
+}
+
+/**
+ * Calculate complete loan details with all fees and costs
+ */
+export async function calculateTractorLoan(
+  tractorId: string,
+  tractorName: string,
+  priceUSD: number
+): Promise<TractorLoanDetails> {
+  // Get live Pi rate
+  const piRate = await getPiRate();
+  const usdPerPi = piRate.usdPerPi;
+
+  // Calculate principal in Pi
+  const principalPi = priceUSD / usdPerPi;
+
+  // Calculate daily payment using amortization formula
+  const dailyPaymentUSD = calculateDailyAmortization(
+    priceUSD,
+    FINANCIAL_CONSTANTS.ANNUAL_INTEREST_RATE,
+    FINANCIAL_CONSTANTS.LOAN_TERM_DAYS
+  );
+
+  // Add daily operational costs
+  const dailyPaymentWithOpsUSD = dailyPaymentUSD + FINANCIAL_CONSTANTS.DAILY_OPERATIONAL_COST_USD;
+
+  // Convert to Pi
+  const dailyPaymentPi = dailyPaymentWithOpsUSD / usdPerPi;
+
+  // Calculate totals
+  const totalPaymentUSD = dailyPaymentWithOpsUSD * FINANCIAL_CONSTANTS.LOAN_TERM_DAYS;
+  const totalPaymentPi = totalPaymentUSD / usdPerPi;
+
+  // Calculate interest
+  const totalInterestUSD = totalPaymentUSD - priceUSD - FINANCIAL_CONSTANTS.FIVE_YEAR_OPERATIONAL_COST_USD;
+  const totalInterestPi = totalInterestUSD / usdPerPi;
+
+  // Calculate buffer fee (5% of principal)
+  const bufferFeeUSD = priceUSD * FINANCIAL_CONSTANTS.BUFFER_FEE_PERCENTAGE;
+  const bufferFeePi = bufferFeeUSD / usdPerPi;
+
+  // Operational costs over 5 years
+  const operationalCostUSD = FINANCIAL_CONSTANTS.FIVE_YEAR_OPERATIONAL_COST_USD;
+  const operationalCostPi = operationalCostUSD / usdPerPi;
+
+  // Platform profit (interest + buffer fee)
+  const platformProfitUSD = totalInterestUSD + bufferFeeUSD;
+  const platformProfitPi = platformProfitUSD / usdPerPi;
+
+  return {
+    tractorId,
+    tractorName,
+    principalUSD: priceUSD,
+    principalPi,
+    loanTermDays: FINANCIAL_CONSTANTS.LOAN_TERM_DAYS,
+    annualRate: FINANCIAL_CONSTANTS.ANNUAL_INTEREST_RATE,
+    dailyPaymentUSD: dailyPaymentWithOpsUSD,
+    dailyPaymentPi,
+    totalPaymentUSD,
+    totalPaymentPi,
+    totalInterestUSD,
+    totalInterestPi,
+    bufferFeeUSD,
+    bufferFeePi,
+    operationalCostUSD,
+    operationalCostPi,
+    platformProfitUSD,
+    platformProfitPi,
+  };
+}
+
+/**
+ * System Flow for Automated Daily Deductions
+ */
+export interface DailyDeductionFlow {
+  step: number;
+  action: string;
+  description: string;
+}
+
+export const DEDUCTION_SYSTEM_FLOW: DailyDeductionFlow[] = [
+  {
+    step: 1,
+    action: 'Fetch Pi Rate',
+    description: 'Fetch live Pi↔USD rate from Pi price oracle (ISO: PI)',
+  },
+  {
+    step: 2,
+    action: 'Calculate Daily USD',
+    description: 'Compute daily deduction in USD using amortization formula + operational costs',
+  },
+  {
+    step: 3,
+    action: 'Convert USD to Pi',
+    description: 'Pi_amount = Daily_USD / (USD_per_Pi)',
+  },
+  {
+    step: 4,
+    action: 'Verify Pi Balance',
+    description: 'Check farmer Pi wallet has sufficient balance for daily deduction',
+  },
+  {
+    step: 5,
+    action: 'Execute Deduction',
+    description: 'Automatically deduct calculated Pi amount from farmer wallet',
+  },
+  {
+    step: 6,
+    action: 'Record Transaction',
+    description: 'Log transaction in MongoDB with timestamp, amount, and conversion rate',
+  },
+  {
+    step: 7,
+    action: 'Send Notification',
+    description: 'Notify farmer of successful deduction with balance update',
+  },
+  {
+    step: 8,
+    action: 'Update Loan Status',
+    description: 'Update remaining balance and days remaining in loan contract',
+  },
+];
+
+/**
+ * Format currency for display
+ */
+export function formatCurrency(amount: number, currency: 'USD' | 'Pi'): string {
+  if (currency === 'USD') {
+    return `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+  return `${amount.toFixed(8)} Pi`;
+}
+
+/**
+ * Calculate platform profitability with 100 farmers
+ */
+export function calculatePlatformProfitability(
+  loanDetails: TractorLoanDetails,
+  numberOfFarmers: number = 100
+): {
+  totalProfitUSD: number;
+  totalProfitPi: number;
+  avgProfitPerFarmerUSD: number;
+  avgProfitPerFarmerPi: number;
+} {
+  return {
+    totalProfitUSD: loanDetails.platformProfitUSD * numberOfFarmers,
+    totalProfitPi: loanDetails.platformProfitPi * numberOfFarmers,
+    avgProfitPerFarmerUSD: loanDetails.platformProfitUSD,
+    avgProfitPerFarmerPi: loanDetails.platformProfitPi,
+  };
+}
+
