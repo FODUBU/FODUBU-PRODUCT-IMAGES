@@ -84,7 +84,7 @@ conditions = "Fixed supply of 1 billion tokens aligned with GCV 314159."
 
 DOCUMENTATION
 ORG_NAME = "FODUBU Ecosystem"
-ORG_URL = "https://fodubu.com"
+ORG_URL = "URL: https://trade.fodubu.com"
 ORG_DESCRIPTION = "Triple-marketplace ecosystem for Global Trade, Eco-Solutions, and Agriculture."
 
 
